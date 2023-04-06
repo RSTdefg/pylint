@@ -3046,7 +3046,7 @@ class VariablesChecker(BaseChecker):
                         # Most likely a typing import if it wasn't used so far.
                         continue
 
-                    if as_name == "_":
+                    if re.fullmatch(r"_+", as_name):
                         continue
                     if as_name is None:
                         msg = f"import {imported_name}"
