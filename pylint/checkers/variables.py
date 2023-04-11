@@ -3045,8 +3045,8 @@ class VariablesChecker(BaseChecker):
                     if is_type_annotation_import:
                         # Most likely a typing import if it wasn't used so far.
                         continue
-
-                    if as_name == "_":
+                
+                    if re.fullmatch(self.linter.config.dummy_variables_rgx, as_name):
                         continue
                     if as_name is None:
                         msg = f"import {imported_name}"
